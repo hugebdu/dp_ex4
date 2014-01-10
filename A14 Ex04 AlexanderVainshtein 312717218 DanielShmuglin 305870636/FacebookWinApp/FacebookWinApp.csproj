@@ -56,6 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Decorators\UserpicDecorator\Strategy\FavoritesCountProvider.cs" />
+    <Compile Include="Decorators\UserpicDecorator\Strategy\IUserAdditionalInfoProvider.cs" />
+    <Compile Include="Decorators\UserpicDecorator\Strategy\OnlineStatusProvider.cs" />
+    <Compile Include="Decorators\UserpicDecorator\UserPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Forms\EntryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +161,7 @@
   <ItemGroup>
     <None Include="Resources\empty_star.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

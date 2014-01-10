@@ -13,6 +13,7 @@ using FacebookWrapper.ObjectModel;
 using Ex2.FacebookApp.UserControls;
 using Ex2.FacebookApp.Model;
 using Ex2.FacebookApp.Model.Translator;
+using Ex2.FacebookApp.Decorators.UserpicDecorator.Strategy;
 
 namespace Ex2.FacebookApp
 {
@@ -35,6 +36,8 @@ namespace Ex2.FacebookApp
         private FavoritesManager m_FavoritesManager;
         private readonly Timer r_FeedRefreshTimer = new Timer();
         private readonly Dictionary<string, ITranslator> r_Translators = new Dictionary<string, ITranslator>();
+        private IUserAdditionalInfoProvider m_FavoritesCountProvider;
+        private IUserAdditionalInfoProvider m_OnlineStatusProvider;
         private User m_User;
         private eTranslatorType m_SelectedTranslatorType = k_DefaultTranslator;
         private eTranslationLang m_SelectedTargetLanguage = k_DefaultTargetLanguage;
@@ -60,6 +63,7 @@ namespace Ex2.FacebookApp
             InitializeComponent();
             initializeTimer();
             initializeFavoritesManager();
+            initializeUserpicDecorators();
         }
 
         private void initializeFavoritesManager()
@@ -76,6 +80,12 @@ namespace Ex2.FacebookApp
             updateRefreshTimeState();
         }
 
+        private void initializeUserpicDecorators()
+        {
+            m_FavoritesCountProvider = new FavoritesCountProvider { FavoritesManager = m_FavoritesManager };
+            m_OnlineStatusProvider = new OnlineStatusProvider();
+        }
+
         private void MainWin_Load(object sender, EventArgs e)
         {
             loadNewFeedAsync();
@@ -89,6 +99,8 @@ namespace Ex2.FacebookApp
             favoritePosts.RemoveAll(pw => pw.Post.Id == i_Post.Id);
             m_FavoritesRepeater.DataSource = new List<PostWrapper>(favoritePosts);
             updateFavoritesTabTitle(favoritePosts.Count);
+            Utils.RefreshControl(m_NewsFeedRepeater);
+            Utils.RefreshControl(m_FavoritesRepeater);
         }
 
         private void m_FavoritesManager_FavoriteAdded(object i_Sender, Post i_Post)
@@ -121,6 +133,8 @@ namespace Ex2.FacebookApp
                         var posts = result.Select(post => createPostWrapper(post)).ToList();
                         updatePostRepeater(m_FavoritesRepeater, m_FavoritePostTemplate, posts);
                         updateFavoritesTabTitle(posts.Count);
+                        Utils.RefreshControl(m_NewsFeedRepeater);
+                        Utils.RefreshControl(m_FavoritesRepeater);
                     }));
         }
 
@@ -260,6 +274,47 @@ namespace Ex2.FacebookApp
             {
                 r_FeedRefreshTimer.Stop();
             }
+        }
+
+        private void favoritesCountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            onlineStatusToolStripMenuItem.Checked = false;
+            favoritesCountToolStripMenuItem.Checked = true;
+            noneToolStripMenuItem.Checked = false;
+            updateAdditionalInfoProvider(m_FavoritesCountProvider);
+        }
+
+        private void onlineStatusToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            favoritesCountToolStripMenuItem.Checked = false;
+            onlineStatusToolStripMenuItem.Checked = true;
+            noneToolStripMenuItem.Checked = false;
+            updateAdditionalInfoProvider(m_OnlineStatusProvider); 
+        }
+
+        private void noneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            onlineStatusToolStripMenuItem.Checked = false;
+            favoritesCountToolStripMenuItem.Checked = false;
+            noneToolStripMenuItem.Checked = true;
+        }
+
+        private void updateAdditionalInfoProvider(IUserAdditionalInfoProvider i_Provider)
+        {
+            updateAdditionalInfoProvider(i_Provider, m_NewsFeedRepeater);
+            updateAdditionalInfoProvider(i_Provider, m_FavoritesRepeater);
+        }
+
+        private void updateAdditionalInfoProvider(IUserAdditionalInfoProvider i_Provider, DataRepeater repeater)
+        {
+            repeater.BeginResetItemTemplate();
+            var postControl = repeater.ItemTemplate.Controls.OfType<PostItemControl>().FirstOrDefault();
+            if (postControl != null)
+            {
+                postControl.UserAdditionalInfoProvider = i_Provider;
+            }
+
+            repeater.EndResetItemTemplate();
         }
     }
 }

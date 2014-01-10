@@ -49,5 +49,17 @@ namespace Ex2.FacebookApp
                 i_PictoreBox.Image = i_Image;
             }
         }
+
+        public static void RefreshControl(Control i_Control)
+        {
+            if (i_Control.InvokeRequired)
+            {
+                i_Control.Invoke(new Action<Control>(RefreshControl), i_Control);
+            }
+            else
+            {
+                i_Control.Refresh();
+            }
+        }
     }
 }

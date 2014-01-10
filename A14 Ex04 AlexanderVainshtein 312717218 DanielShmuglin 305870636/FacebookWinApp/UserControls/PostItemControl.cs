@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
 using Ex2.FacebookApp.Model;
 using Ex2.FacebookApp.Model.Translator;
+using Ex2.FacebookApp.Decorators.UserpicDecorator.Strategy;
 
 namespace Ex2.FacebookApp.UserControls
 {
@@ -35,6 +36,18 @@ namespace Ex2.FacebookApp.UserControls
                 {
                     m_Post = value;
                     updateView();
+                }
+            }
+        }
+
+        public IUserAdditionalInfoProvider UserAdditionalInfoProvider
+        {
+            get { return m_UserPicture.AdditionalInfoProvider; }
+            set
+            {
+                if (value != m_UserPicture.AdditionalInfoProvider)
+                {
+                    m_UserPicture.AdditionalInfoProvider = value;
                 }
             }
         }
@@ -95,21 +108,15 @@ namespace Ex2.FacebookApp.UserControls
         private void updateView()
         {
             long likesCount = 0;
-            if (m_Post != null)
+            if (m_Post != null && m_Post.LikedBy != null)
             {
-                if ((m_Post as PostedItem).LikedBy != null)
-                {
-                    likesCount = (m_Post as PostedItem).LikedBy.Count;
-                }
-                else
-                {
-                    likesCount = m_Post.LikesCount;
-                }
+                likesCount = m_Post.LikedBy.Count;
             }
+
+            m_UserPicture.User = m_Post == null ? null : m_Post.From;
 
             Utils.UpdateControlText(m_Name, m_Post == null || m_Post.From == null ? string.Empty : m_Post.From.Name);
             Utils.UpdateControlText(m_LikesCountLabel, likesCount.ToString());
-            Utils.UpdateImage(m_UserPicture, m_Post == null || m_Post.From == null ? null : m_Post.From.ImageNormal);
             Utils.UpdateControlText(m_CreationDateLabel, m_Post == null || !m_Post.CreatedTime.HasValue ? null : m_Post.CreatedTime.Value.ToString());
             updatePostBody();
             updateIsFavoriteView();

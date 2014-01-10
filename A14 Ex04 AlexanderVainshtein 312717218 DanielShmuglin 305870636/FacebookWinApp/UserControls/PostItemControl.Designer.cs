@@ -37,11 +37,11 @@
             this.m_TranslatedPostBody = new System.Windows.Forms.RichTextBox();
             this.m_LikesLabel = new System.Windows.Forms.Label();
             this.m_LeftPanel = new System.Windows.Forms.Panel();
-            this.m_LikesCountLabel = new System.Windows.Forms.Label();
-            this.m_ViewPostLink = new System.Windows.Forms.LinkLabel();
             this.m_CreationDateLabel = new System.Windows.Forms.Label();
             this.m_FavoriteBox = new System.Windows.Forms.PictureBox();
-            this.m_UserPicture = new System.Windows.Forms.PictureBox();
+            this.m_LikesCountLabel = new System.Windows.Forms.Label();
+            this.m_ViewPostLink = new System.Windows.Forms.LinkLabel();
+            this.m_UserPicture = new Ex2.FacebookApp.Decorators.UserpicDecorator.UserPictureBox();
             this.m_BodyPannel.SuspendLayout();
             this.m_TabControl.SuspendLayout();
             this.m_OriginalTab.SuspendLayout();
@@ -145,37 +145,17 @@
             // 
             this.m_LeftPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.m_LeftPanel.Controls.Add(this.m_UserPicture);
             this.m_LeftPanel.Controls.Add(this.m_CreationDateLabel);
             this.m_LeftPanel.Controls.Add(this.m_FavoriteBox);
             this.m_LeftPanel.Controls.Add(this.m_LikesCountLabel);
             this.m_LeftPanel.Controls.Add(this.m_ViewPostLink);
-            this.m_LeftPanel.Controls.Add(this.m_UserPicture);
             this.m_LeftPanel.Controls.Add(this.m_LikesLabel);
             this.m_LeftPanel.Controls.Add(this.m_Name);
             this.m_LeftPanel.Location = new System.Drawing.Point(3, 3);
             this.m_LeftPanel.Name = "m_LeftPanel";
             this.m_LeftPanel.Size = new System.Drawing.Size(118, 160);
             this.m_LeftPanel.TabIndex = 6;
-            // 
-            // m_LikesCountLabel
-            // 
-            this.m_LikesCountLabel.AutoSize = true;
-            this.m_LikesCountLabel.Location = new System.Drawing.Point(37, 121);
-            this.m_LikesCountLabel.Name = "m_LikesCountLabel";
-            this.m_LikesCountLabel.Size = new System.Drawing.Size(13, 13);
-            this.m_LikesCountLabel.TabIndex = 7;
-            this.m_LikesCountLabel.Text = "0";
-            // 
-            // m_ViewPostLink
-            // 
-            this.m_ViewPostLink.AutoSize = true;
-            this.m_ViewPostLink.Location = new System.Drawing.Point(3, 102);
-            this.m_ViewPostLink.Name = "m_ViewPostLink";
-            this.m_ViewPostLink.Size = new System.Drawing.Size(80, 13);
-            this.m_ViewPostLink.TabIndex = 6;
-            this.m_ViewPostLink.TabStop = true;
-            this.m_ViewPostLink.Text = "View post in FB";
-            this.m_ViewPostLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.m_ViewPostLink_LinkClicked);
             // 
             // m_CreationDateLabel
             // 
@@ -198,12 +178,32 @@
             this.m_FavoriteBox.TabStop = false;
             this.m_FavoriteBox.Click += new System.EventHandler(this.m_FavoriteBox_Click);
             // 
+            // m_LikesCountLabel
+            // 
+            this.m_LikesCountLabel.AutoSize = true;
+            this.m_LikesCountLabel.Location = new System.Drawing.Point(37, 121);
+            this.m_LikesCountLabel.Name = "m_LikesCountLabel";
+            this.m_LikesCountLabel.Size = new System.Drawing.Size(13, 13);
+            this.m_LikesCountLabel.TabIndex = 7;
+            this.m_LikesCountLabel.Text = "0";
+            // 
+            // m_ViewPostLink
+            // 
+            this.m_ViewPostLink.AutoSize = true;
+            this.m_ViewPostLink.Location = new System.Drawing.Point(3, 102);
+            this.m_ViewPostLink.Name = "m_ViewPostLink";
+            this.m_ViewPostLink.Size = new System.Drawing.Size(80, 13);
+            this.m_ViewPostLink.TabIndex = 6;
+            this.m_ViewPostLink.TabStop = true;
+            this.m_ViewPostLink.Text = "View post in FB";
+            this.m_ViewPostLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.m_ViewPostLink_LinkClicked);
+            // 
             // m_UserPicture
             // 
-            this.m_UserPicture.Location = new System.Drawing.Point(9, 3);
+            this.m_UserPicture.Location = new System.Drawing.Point(6, 3);
             this.m_UserPicture.Name = "m_UserPicture";
-            this.m_UserPicture.Size = new System.Drawing.Size(98, 73);
-            this.m_UserPicture.TabIndex = 0;
+            this.m_UserPicture.Size = new System.Drawing.Size(109, 77);
+            this.m_UserPicture.TabIndex = 10;
             this.m_UserPicture.TabStop = false;
             // 
             // PostItemControl
@@ -229,7 +229,6 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox m_UserPicture;
         private System.Windows.Forms.Panel m_BodyPannel;
         private System.Windows.Forms.RichTextBox m_PostBody;
         private System.Windows.Forms.LinkLabel m_Name;
@@ -243,5 +242,6 @@
         private System.Windows.Forms.Label m_LikesCountLabel;
         private System.Windows.Forms.PictureBox m_FavoriteBox;
         private System.Windows.Forms.Label m_CreationDateLabel;
+        private Decorators.UserpicDecorator.UserPictureBox m_UserPicture;
     }
 }
