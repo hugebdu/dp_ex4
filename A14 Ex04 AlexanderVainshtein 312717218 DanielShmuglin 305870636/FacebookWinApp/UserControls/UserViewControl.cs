@@ -25,7 +25,7 @@ namespace Ex2.FacebookApp.UserControls
                 if (m_User != value)
                 {
                     m_User = value;
-                    updateView();
+                    updateBinding();
                 }
             }
         }
@@ -35,23 +35,24 @@ namespace Ex2.FacebookApp.UserControls
             InitializeComponent();
         }
 
-        private void m_FBLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void linkLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (User != null && !string.IsNullOrEmpty(User.Id))
             {
-                Process.Start(string.Format("https://www.facebook.com/{0}", User.Id));
-            }
-            else
-            {
-                MessageBox.Show("User info is not available", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Process.Start(linkLinkLabel.Text);
             }
         }
 
-        private void updateView()
+        private void updateBinding()
         {
-            Utils.UpdateControlText(m_UsernameLabel, m_User != null ? m_User.Name : null);
-            Utils.UpdateControlText(m_OtherInfo, m_User != null && m_User.Location != null ? m_User.Location.Name : null);
-            Utils.UpdateImage(m_Userpic, m_User != null ? m_User.ImageLarge : null);
+            if (linkLinkLabel.InvokeRequired)
+            {
+                linkLinkLabel.Invoke(new Action(() => userBindingSource.DataSource = User));
+            }
+            else
+            {
+                userBindingSource.DataSource = User;
+            }
         }
     }
 }

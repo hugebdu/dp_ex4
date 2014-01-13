@@ -28,65 +28,132 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.m_UsernameLabel = new System.Windows.Forms.Label();
-            this.m_FBLink = new System.Windows.Forms.LinkLabel();
-            this.m_OtherInfo = new System.Windows.Forms.Label();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.Label birthdayLabel;
+            System.Windows.Forms.Label linkLabel;
+            System.Windows.Forms.Label nameLabel;
+            System.Windows.Forms.Label religionLabel;
             this.m_UserGroupBox = new System.Windows.Forms.GroupBox();
-            this.m_Userpic = new System.Windows.Forms.PictureBox();
+            this.birthdayLabel1 = new System.Windows.Forms.Label();
+            this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.imageLargePictureBox = new System.Windows.Forms.PictureBox();
+            this.linkLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.nameLabel1 = new System.Windows.Forms.Label();
+            this.religionLabel1 = new System.Windows.Forms.Label();
+            birthdayLabel = new System.Windows.Forms.Label();
+            linkLabel = new System.Windows.Forms.Label();
+            nameLabel = new System.Windows.Forms.Label();
+            religionLabel = new System.Windows.Forms.Label();
             this.m_UserGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.m_Userpic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageLargePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // m_UsernameLabel
+            // birthdayLabel
             // 
-            this.m_UsernameLabel.AutoSize = true;
-            this.m_UsernameLabel.Location = new System.Drawing.Point(6, 166);
-            this.m_UsernameLabel.Name = "m_UsernameLabel";
-            this.m_UsernameLabel.Size = new System.Drawing.Size(39, 13);
-            this.m_UsernameLabel.TabIndex = 1;
-            this.m_UsernameLabel.Text = "[name]";
+            birthdayLabel.AutoSize = true;
+            birthdayLabel.Location = new System.Drawing.Point(25, 210);
+            birthdayLabel.Name = "birthdayLabel";
+            birthdayLabel.Size = new System.Drawing.Size(48, 13);
+            birthdayLabel.TabIndex = 2;
+            birthdayLabel.Text = "Birthday:";
             // 
-            // m_FBLink
+            // linkLabel
             // 
-            this.m_FBLink.AutoSize = true;
-            this.m_FBLink.Location = new System.Drawing.Point(6, 217);
-            this.m_FBLink.Name = "m_FBLink";
-            this.m_FBLink.Size = new System.Drawing.Size(90, 13);
-            this.m_FBLink.TabIndex = 2;
-            this.m_FBLink.TabStop = true;
-            this.m_FBLink.Text = "Open user\'s page";
-            this.m_FBLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.m_FBLink_LinkClicked);
+            linkLabel.AutoSize = true;
+            linkLabel.Location = new System.Drawing.Point(7, 164);
+            linkLabel.Name = "linkLabel";
+            linkLabel.Size = new System.Drawing.Size(66, 13);
+            linkLabel.TabIndex = 6;
+            linkLabel.Text = "User\'s page:";
             // 
-            // m_OtherInfo
+            // nameLabel
             // 
-            this.m_OtherInfo.AutoSize = true;
-            this.m_OtherInfo.Location = new System.Drawing.Point(6, 192);
-            this.m_OtherInfo.Name = "m_OtherInfo";
-            this.m_OtherInfo.Size = new System.Drawing.Size(30, 13);
-            this.m_OtherInfo.TabIndex = 3;
-            this.m_OtherInfo.Text = "[info]";
+            nameLabel.AutoSize = true;
+            nameLabel.Location = new System.Drawing.Point(35, 187);
+            nameLabel.Name = "nameLabel";
+            nameLabel.Size = new System.Drawing.Size(38, 13);
+            nameLabel.TabIndex = 8;
+            nameLabel.Text = "Name:";
             // 
             // m_UserGroupBox
             // 
-            this.m_UserGroupBox.Controls.Add(this.m_Userpic);
-            this.m_UserGroupBox.Controls.Add(this.m_OtherInfo);
-            this.m_UserGroupBox.Controls.Add(this.m_UsernameLabel);
-            this.m_UserGroupBox.Controls.Add(this.m_FBLink);
+            this.m_UserGroupBox.Controls.Add(religionLabel);
+            this.m_UserGroupBox.Controls.Add(this.religionLabel1);
+            this.m_UserGroupBox.Controls.Add(birthdayLabel);
+            this.m_UserGroupBox.Controls.Add(this.birthdayLabel1);
+            this.m_UserGroupBox.Controls.Add(this.imageLargePictureBox);
+            this.m_UserGroupBox.Controls.Add(linkLabel);
+            this.m_UserGroupBox.Controls.Add(this.linkLinkLabel);
+            this.m_UserGroupBox.Controls.Add(nameLabel);
+            this.m_UserGroupBox.Controls.Add(this.nameLabel1);
             this.m_UserGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.m_UserGroupBox.Location = new System.Drawing.Point(0, 0);
             this.m_UserGroupBox.Name = "m_UserGroupBox";
-            this.m_UserGroupBox.Size = new System.Drawing.Size(212, 254);
+            this.m_UserGroupBox.Size = new System.Drawing.Size(386, 321);
             this.m_UserGroupBox.TabIndex = 4;
             this.m_UserGroupBox.TabStop = false;
             this.m_UserGroupBox.Text = "User";
             // 
-            // m_Userpic
+            // birthdayLabel1
             // 
-            this.m_Userpic.Location = new System.Drawing.Point(6, 19);
-            this.m_Userpic.Name = "m_Userpic";
-            this.m_Userpic.Size = new System.Drawing.Size(192, 133);
-            this.m_Userpic.TabIndex = 0;
-            this.m_Userpic.TabStop = false;
+            this.birthdayLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userBindingSource, "Birthday", true));
+            this.birthdayLabel1.Location = new System.Drawing.Point(79, 210);
+            this.birthdayLabel1.Name = "birthdayLabel1";
+            this.birthdayLabel1.Size = new System.Drawing.Size(100, 23);
+            this.birthdayLabel1.TabIndex = 3;
+            this.birthdayLabel1.Text = "label1";
+            // 
+            // userBindingSource
+            // 
+            this.userBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.User);
+            // 
+            // imageLargePictureBox
+            // 
+            this.imageLargePictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.userBindingSource, "ImageLarge", true));
+            this.imageLargePictureBox.Location = new System.Drawing.Point(6, 19);
+            this.imageLargePictureBox.Name = "imageLargePictureBox";
+            this.imageLargePictureBox.Size = new System.Drawing.Size(173, 131);
+            this.imageLargePictureBox.TabIndex = 5;
+            this.imageLargePictureBox.TabStop = false;
+            // 
+            // linkLinkLabel
+            // 
+            this.linkLinkLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userBindingSource, "Link", true));
+            this.linkLinkLabel.Location = new System.Drawing.Point(79, 164);
+            this.linkLinkLabel.Name = "linkLinkLabel";
+            this.linkLinkLabel.Size = new System.Drawing.Size(100, 23);
+            this.linkLinkLabel.TabIndex = 7;
+            this.linkLinkLabel.TabStop = true;
+            this.linkLinkLabel.Text = "linkLabel1";
+            this.linkLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLinkLabel_LinkClicked);
+            // 
+            // nameLabel1
+            // 
+            this.nameLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userBindingSource, "Name", true));
+            this.nameLabel1.Location = new System.Drawing.Point(79, 187);
+            this.nameLabel1.Name = "nameLabel1";
+            this.nameLabel1.Size = new System.Drawing.Size(100, 23);
+            this.nameLabel1.TabIndex = 9;
+            this.nameLabel1.Text = "label1";
+            // 
+            // religionLabel
+            // 
+            religionLabel.AutoSize = true;
+            religionLabel.Location = new System.Drawing.Point(25, 233);
+            religionLabel.Name = "religionLabel";
+            religionLabel.Size = new System.Drawing.Size(48, 13);
+            religionLabel.TabIndex = 9;
+            religionLabel.Text = "Religion:";
+            // 
+            // religionLabel1
+            // 
+            this.religionLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userBindingSource, "Religion", true));
+            this.religionLabel1.Location = new System.Drawing.Point(79, 233);
+            this.religionLabel1.Name = "religionLabel1";
+            this.religionLabel1.Size = new System.Drawing.Size(100, 23);
+            this.religionLabel1.TabIndex = 10;
+            this.religionLabel1.Text = "label1";
             // 
             // UserViewControl
             // 
@@ -94,20 +161,23 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.m_UserGroupBox);
             this.Name = "UserViewControl";
-            this.Size = new System.Drawing.Size(212, 254);
+            this.Size = new System.Drawing.Size(386, 321);
             this.m_UserGroupBox.ResumeLayout(false);
             this.m_UserGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.m_Userpic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageLargePictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox m_Userpic;
-        private System.Windows.Forms.Label m_UsernameLabel;
-        private System.Windows.Forms.LinkLabel m_FBLink;
-        private System.Windows.Forms.Label m_OtherInfo;
         private System.Windows.Forms.GroupBox m_UserGroupBox;
+        private System.Windows.Forms.BindingSource userBindingSource;
+        private System.Windows.Forms.Label birthdayLabel1;
+        private System.Windows.Forms.PictureBox imageLargePictureBox;
+        private System.Windows.Forms.LinkLabel linkLinkLabel;
+        private System.Windows.Forms.Label nameLabel1;
+        private System.Windows.Forms.Label religionLabel1;
     }
 }

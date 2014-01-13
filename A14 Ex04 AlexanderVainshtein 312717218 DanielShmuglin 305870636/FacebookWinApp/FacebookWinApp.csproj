@@ -144,6 +144,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\DataSources\FacebookWrapper.ObjectModel.User.datasource" />
     <None Include="Resources\star.jpg" />
   </ItemGroup>
   <ItemGroup>
