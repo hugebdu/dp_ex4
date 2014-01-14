@@ -44,7 +44,7 @@
 
             r_FavoritePosts.Add(i_Post.Id, new Tuple<FavoriteItem, Post>(new FavoriteItem(i_Post), i_Post));
             m_Storage.PutItem(r_FavoritePosts[i_Post.Id].Item1);
-            OnFavoriteAdded(i_Post);
+            onFavoriteAdded(i_Post);
         }
 
         public void UnmarkFavorite(Post i_Post)
@@ -56,7 +56,7 @@
             }
 
             m_Storage.DeleteItem(i_Post.Id);
-            OnFavoriteRemoved(i_Post);
+            onFavoriteRemoved(i_Post);
         }
 
         public void GetFavoritePostsAsync(Action<IEnumerable<Post>> i_Callback)
@@ -87,7 +87,7 @@
             return creationTime2.CompareTo(creationTime1);
         }
 
-        private void OnFavoriteAdded(Post i_Post)
+        private void onFavoriteAdded(Post i_Post)
         {
             if (FavoriteAdded != null)
             {
@@ -95,7 +95,7 @@
             }
         }
 
-        private void OnFavoriteRemoved(Post i_Post)
+        private void onFavoriteRemoved(Post i_Post)
         {
             if (FavoriteRemoved != null)
             {
